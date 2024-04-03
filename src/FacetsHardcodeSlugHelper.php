@@ -36,6 +36,12 @@ class FacetsHardcodeSlugHelper {
     $slug = FALSE;
 
     $entity_type = self::getEntityType($filterKey);
+    // If the entity type is not configured or can't be discerned, just return
+    // the original value.
+    if (!$entity_type) {
+      return $value;
+    }
+
     list($entity_type) = explode(':', $entity_type);
 
     if (!empty($entity_type) && !empty($value)) {
@@ -65,7 +71,6 @@ class FacetsHardcodeSlugHelper {
 
     $entity_type = self::getEntityType($filterKey);
     $bundle = NULL;
-
     if (strpos($entity_type, ':') !== FALSE) {
       list($entity_type, $bundle) = explode(':', $entity_type);
     }
