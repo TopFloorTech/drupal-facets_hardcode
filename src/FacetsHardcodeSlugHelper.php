@@ -71,6 +71,10 @@ class FacetsHardcodeSlugHelper {
 
     $entity_type = self::getEntityType($filterKey);
     $bundle = NULL;
+    // Deprecated: Passing null param to strpos.
+    if (!$entity_type) {
+      return $slug;
+    }
     if (strpos($entity_type, ':') !== FALSE) {
       list($entity_type, $bundle) = explode(':', $entity_type);
     }
