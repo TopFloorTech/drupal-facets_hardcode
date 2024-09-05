@@ -62,7 +62,7 @@ class FacetsHardcodeUrlProcessor extends UrlProcessorPluginBase {
       $configuration,
       $plugin_id,
       $plugin_definition,
-      $container->get('request_stack')->getMasterRequest(),
+      $container->get('request_stack')->getMainRequest(),
       $container->get('entity_type.manager')
     );
   }
