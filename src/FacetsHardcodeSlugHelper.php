@@ -48,6 +48,10 @@ class FacetsHardcodeSlugHelper {
       /** @var ContentEntityInterface $entity */
       $entity = \Drupal::entityTypeManager()->getStorage($entity_type)->load($value);
 
+      if (!$entity instanceof ContentEntityInterface) {
+        return $value;
+      }
+
       $slugField = $config->get('slug_field');
 
       if ($entity->hasField($slugField)) {
